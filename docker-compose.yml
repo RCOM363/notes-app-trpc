@@ -3,10 +3,8 @@ services:
     image: postgres:18-alpine
     container_name: db_container
     restart: always
-    environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
+    env_file:
+      - ./server/.env
     ports:
       - "5432:5432"
     volumes:
@@ -26,20 +24,31 @@ services:
     volumes:
       - pgadmin_data:/var/lib/pgadmin
 
-  api:
+  server:
     build:
-      context: ./
+      context: ./server
       dockerfile: Dockerfile
-    container_name: api_container
+    container_name: server_container
     ports:
       - "5000:5000"
     env_file:
-      - ./.env
+      - ./server/.env
     depends_on:
       - db
     volumes:
-      - ./:/usr/src
-      # - /usr/src/node_modules
+      - ./server/:/usr/src
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: client_container
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    volumes:
+      - ./client:/app
 
 volumes:
   pg_data:
