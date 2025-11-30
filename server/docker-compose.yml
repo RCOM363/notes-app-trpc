@@ -1,0 +1,46 @@
+services:
+  db:
+    image: postgres:18-alpine
+    container_name: db_container
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@notes-app.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "8888:80"
+    depends_on:
+      - db
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: api_container
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+    volumes:
+      - ./:/usr/src
+      # - /usr/src/node_modules
+
+volumes:
+  pg_data:
+  pgadmin_data:
