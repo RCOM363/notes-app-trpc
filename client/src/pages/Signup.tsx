@@ -22,7 +22,7 @@ function Signup() {
     });
     if (res) {
       reset();
-      navigate("/login");
+      navigate("/");
     }
   };
   return (
