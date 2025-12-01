@@ -73,14 +73,14 @@ All procedures are grouped by module (`auth.*`, `note.*`). **publicProcedures** 
 - Type: `publicProcedure`
 - Method: `Mutation`
 - Input:
-  ```json
+  ```bash
   {
       "email": string,
       "password": string
   }
   ```
 - Output:
-  ```json
+  ```bash
   {
       "id": number,
       "email": string
@@ -92,14 +92,14 @@ All procedures are grouped by module (`auth.*`, `note.*`). **publicProcedures** 
 - Type: `publicProcedure`
 - Method: `Mutation`
 - Input:
-  ```json
+  ```bash
   {
       "email": string,
       "password": string
   }
   ```
 - Output:
-  ```json
+  ```bash
   {
       "id": number,
       "email": string
@@ -113,7 +113,7 @@ All procedures are grouped by module (`auth.*`, `note.*`). **publicProcedures** 
 - Method: `Query`
 - Input: None
 - Output:
-  ```json
+  ```bash
   {
       "id": number,
       "email": string
@@ -127,14 +127,14 @@ All procedures are grouped by module (`auth.*`, `note.*`). **publicProcedures** 
 - Type: `protectedProcedure`
 - Method: `Mutation`
 - Input:
-  ```json
+  ```bash
   {
       "title": string,
       "content": string
   }
   ```
 - Output:
-  ```json
+  ```bash
   {
     "noteId": number,
     "title": string,
@@ -149,7 +149,7 @@ All procedures are grouped by module (`auth.*`, `note.*`). **publicProcedures** 
 - Type: `protectedProcedure`
 - Method: `Mutation`
 - Input:
-  ```json
+  ```bash
   {
       "title": string,
       "content": string,
@@ -157,7 +157,7 @@ All procedures are grouped by module (`auth.*`, `note.*`). **publicProcedures** 
   }
   ```
 - Output:
-  ```json
+  ```bash
   {
     "noteId": number,
     "title": string,
@@ -172,14 +172,14 @@ All procedures are grouped by module (`auth.*`, `note.*`). **publicProcedures** 
 - Type: `protectedProcedure`
 - Method: `Mutation`
 - Input:
-  ```json
+  ```bash
   {
       "nodeId": number
       "userId": number,
   }
   ```
 - Output:
-  ```json
+  ```bash
   {
     "success": true
   }
@@ -190,14 +190,14 @@ All procedures are grouped by module (`auth.*`, `note.*`). **publicProcedures** 
 - Type: `protectedProcedure`
 - Method: `Query`
 - Input:
-  ```json
+  ```bash
   {
       "nodeId": number
       "userId": string,
   }
   ```
 - Output:
-  ```json
+  ```bash
   {
     "noteId": number,
     "title": string,
@@ -213,7 +213,7 @@ All procedures are grouped by module (`auth.*`, `note.*`). **publicProcedures** 
 - Method: `Query`
 - Input: None
 - Output:
-  ```json
+  ```bash
   [
     {
         "noteId": number,
